@@ -46,7 +46,7 @@ export function LiveCard({
           </div>
         </div>
         <div className="text-bn-text-primary px-4 pb-2.5 text-[17px] font-bold">{title}</div>
-        <div className="mx-4 h-px bg-black/[0.06]" />
+        <div className="mx-4 h-px bg-black/6" />
         <div className="flex justify-between px-4 py-2.5 text-[13px] text-[#666]">
           <span>{popularity}</span>
           <span>{category}</span>
