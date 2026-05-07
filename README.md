@@ -67,17 +67,6 @@ src/
 
 CJK 字体走系统优先栈（PingFang SC / Microsoft YaHei / Source Han Sans / Noto Sans CJK），不再从 Google Fonts CDN 拉取，避免国内访问被拖慢。
 
-## 部署
-
-项目已为 Vercel 调校好：默认 Vite 预设即可识别，无需 `vercel.json`。
-
-```bash
-pnpm dlx vercel        # 首次部署
-pnpm dlx vercel --prod # 发 Production
-```
-
-或在 https://vercel.com/new 导入 GitHub 仓库，之后 `git push main` 自动部署。
-
 ## 提交规范
 
 遵循 [Conventional Commits](https://www.conventionalcommits.org/)：
