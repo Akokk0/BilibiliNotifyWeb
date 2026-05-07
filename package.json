@@ -1,0 +1,32 @@
+{
+  "name": "bilibili-notify-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Promotional landing page for Bilibili Notify — a Koishi-based Bilibili push plugin.",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "lint": "biome check .",
+    "format": "biome format --write .",
+    "fix": "biome check --write ."
+  },
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.14",
+    "@tailwindcss/vite": "^4.2.4",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "lefthook": "^2.1.6",
+    "tailwindcss": "^4.2.4",
+    "typescript": "~6.0.3",
+    "vite": "^8.0.11"
+  },
+  "packageManager": "pnpm@10.33.4"
+}
