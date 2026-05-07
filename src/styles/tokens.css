@@ -1,0 +1,99 @@
+/**
+ * Bilibili Notify — Design Tokens
+ * Source: packages/image/src/styles.ts, packages/core/client/settings.vue
+ */
+
+:root {
+  /* ── Brand Colors ─────────────────────────────────────────── */
+  --bn-pink: #fb7299;
+  --bn-blue: #00aeec;
+  --bn-blue-light: #4ebcec;
+  --bew-theme-color: #fb7299;
+
+  /* ── Text Colors ──────────────────────────────────────────── */
+  --bn-text-primary: #18191c;
+  --bn-text-secondary: #999999;
+  --bn-text-tertiary: #666666;
+  --bn-text-on-photo: #ffffff;
+  --bn-text-link: #00aeec;
+  --bn-text-vip: #fb7299;
+
+  /* ── Card Default Gradient ────────────────────────────────── */
+  --bn-grad-default-start: #e0c3fc;
+  --bn-grad-default-end: #8ec5fc;
+
+  /* ── Frosted Glass Card ───────────────────────────────────── */
+  --bn-card-bg: rgba(255, 255, 255, 0.82);
+  --bn-card-blur: blur(10px);
+  --bn-card-radius: 12px;
+  --bn-card-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --bn-card-padding: 15px;
+  --bn-card-inner-pad: 16px;
+
+  /* ── Radii ────────────────────────────────────────────────── */
+  --bn-radius-card: 12px;
+  --bn-radius-image: 8px;
+  --bn-radius-avatar: 50%;
+  --bn-radius-badge: 12px;
+  --bn-radius-name: 25px;
+  --bn-radius-console: 1rem;
+  --bn-radius-glass: 10px;
+
+  /* ── Borders ──────────────────────────────────────────────── */
+  --bn-avatar-border: 3px solid white;
+  --bn-divider: 1px solid rgba(0, 0, 0, 0.06);
+
+  /* ── Shadows ──────────────────────────────────────────────── */
+  --bn-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.12);
+  --bn-shadow-avatar: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --bn-shadow-console: 0 4px 8px 0 rgba(0, 0, 0, 0.15);
+  --bn-shadow-text: 3px 3px 5px rgba(0, 0, 0, 0.7);
+
+  /* ── Spacing Scale ────────────────────────────────────────── */
+  --bn-space-1: 4px;
+  --bn-space-2: 8px;
+  --bn-space-3: 12px;
+  --bn-space-4: 16px;
+  --bn-space-5: 20px;
+  --bn-space-6: 24px;
+  --bn-space-8: 32px;
+  --bn-space-10: 40px;
+
+  /* ── Avatar Sizes ─────────────────────────────────────────── */
+  --bn-avatar-live: 44px;
+  --bn-avatar-dynamic: 52px;
+  --bn-avatar-sc: 70px;
+  --bn-avatar-guard: 90px;
+  --bn-avatar-console: 5rem;
+
+  /* ── Animation ────────────────────────────────────────────── */
+  --bn-anim-fade-dur: 0.5s;
+  --bn-anim-spin-dur: 1s;
+  --bn-anim-ease: linear;
+
+  /* ── SC Level Colors ──────────────────────────────────────── */
+  --bn-sc1-a: #a8e6cf;
+  --bn-sc1-b: #88d8b0;
+  --bn-sc2-a: #74b9ff;
+  --bn-sc2-b: #0984e3;
+  --bn-sc3-a: #a29bfe;
+  --bn-sc3-b: #6c5ce7;
+  --bn-sc4-a: #fd79a8;
+  --bn-sc4-b: #e84393;
+  --bn-sc5-a: #fdcb6e;
+  --bn-sc5-b: #e17055;
+  --bn-sc6-a: #ff7675;
+  --bn-sc6-b: #d63031;
+
+  /* ── Guard Level Colors ───────────────────────────────────── */
+  --bn-guard-captain-a: #4ebcec;
+  --bn-guard-captain-b: #b494e5;
+  --bn-guard-admiral-a: #d8a0e6;
+  --bn-guard-admiral-b: #b494e5;
+  --bn-guard-governor-a: #f2a053;
+  --bn-guard-governor-b: #ef5f5f;
+
+  /* ── Font stacks ──────────────────────────────────────────── */
+  --bn-font-cjk: "Noto Sans SC", "Microsoft YaHei", "Source Han Sans", "Noto Sans CJK", sans-serif;
+  --bn-font-mono: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+}

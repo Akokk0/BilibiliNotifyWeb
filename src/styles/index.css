@@ -1,1 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&display=swap");
 @import "tailwindcss";
+@import "./site.css" layer(components);
+
+/* Hook our existing :root design tokens into Tailwind's theme so utilities
+   like `bg-bn-pink`, `text-bn-text-tertiary`, `font-cjk` resolve back to the
+   same CSS variables used by site.css. */
+@theme inline {
+  --color-bn-pink: var(--bn-pink);
+  --color-bn-blue: var(--bn-blue);
+  --color-bn-blue-light: var(--bn-blue-light);
+  --color-bn-text-primary: var(--bn-text-primary);
+  --color-bn-text-secondary: var(--bn-text-secondary);
+  --color-bn-text-tertiary: var(--bn-text-tertiary);
+  --color-bn-vip: var(--bn-text-vip);
+
+  --font-cjk: var(--bn-font-cjk);
+  --font-mono: var(--bn-font-mono);
+
+  --shadow-bn-card: var(--bn-card-shadow);
+  --shadow-bn-avatar: var(--bn-shadow-avatar);
+}
