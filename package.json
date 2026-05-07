@@ -1,7 +1,7 @@
 {
   "name": "bilibili-notify-web",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.0.1",
   "type": "module",
   "description": "Promotional landing page for Bilibili Notify — a Koishi-based Bilibili push plugin.",
   "scripts": {
