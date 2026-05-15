@@ -1,6 +1,8 @@
 @import "tailwindcss";
 @import "./site.css" layer(components);
 
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
 /* Hook our existing :root design tokens into Tailwind's theme so utilities
    like `bg-bn-pink`, `text-bn-text-tertiary`, `font-cjk` resolve back to the
    same CSS variables used by site.css. */

@@ -10,8 +10,8 @@ const FEATURES = [
   {
     ic: '✓',
     icBg: 'linear-gradient(135deg, #00AEEC, #0984e3)',
-    title: '可视化订阅',
-    desc: '表单式配置 UP 主 UID、推送目标、消息类型，所见即所得。',
+    title: '表单式订阅配置',
+    desc: '在插件配置页填写 UP 主 UID、推送目标和消息类型，保存即生效。',
   },
   {
     ic: '◎',
@@ -149,19 +149,39 @@ export function Console() {
                 </div>
 
                 <div className="kc-formcard">
-                  <div className="kc-form-title">日志等级</div>
-                  <div className="kc-form-desc">3 = 详细调试信息，1 = 仅错误。修改后自动保存。</div>
-                  <div className="kc-slider">
-                    <div className="kc-slider-track">
-                      <div className="kc-slider-fill" />
-                      <div className="kc-slider-thumb" />
-                    </div>
-                    <div className="kc-slider-marks">
-                      <span>1</span>
-                      <span>2</span>
-                      <span className="active">3</span>
-                      <span>4</span>
-                    </div>
+                  <div className="flex items-baseline justify-between">
+                    <div className="kc-form-title">订阅 UP 主</div>
+                    <div className="text-[11px] text-bn-text-secondary">已订阅 4 位</div>
+                  </div>
+                  <div className="kc-form-desc">每一项都可单独开关动态 / 直播推送。</div>
+                  <div className="overflow-hidden rounded-lg border border-black/5 bg-white">
+                    {[
+                      { uid: '1194210119', name: '兔月眠子' },
+                      { uid: '194484313', name: 'Asaki' },
+                      { uid: '686127', name: '籽岷' },
+                      { uid: '1629347259', name: '08' },
+                    ].map((s, i, arr) => (
+                      <div
+                        key={s.uid}
+                        className={`flex items-center gap-2.5 px-3 py-2 text-[12px] ${
+                          i < arr.length - 1 ? 'border-b border-black/[0.04]' : ''
+                        }`}
+                      >
+                        <span className="text-bn-text-secondary font-mono">UID {s.uid}</span>
+                        <span className="text-bn-text-primary font-bold">{s.name}</span>
+                        <span className="ml-auto flex gap-1">
+                          <span className="rounded bg-[#00AEEC]/12 px-1.5 py-px text-[10px] font-bold text-[#0096cc]">
+                            动态
+                          </span>
+                          <span className="rounded bg-bn-pink/12 px-1.5 py-px text-[10px] font-bold text-bn-pink">
+                            直播
+                          </span>
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <div className="mt-2 text-right">
+                    <span className="text-[11px] text-bn-pink font-bold">+ 添加订阅</span>
                   </div>
                 </div>
               </main>

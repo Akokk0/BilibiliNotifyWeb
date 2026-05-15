@@ -4,6 +4,7 @@ import { GuardCard } from './cards/GuardCard'
 import { LiveCard } from './cards/LiveCard'
 import { OfflineCard } from './cards/OfflineCard'
 import { SuperChatCard } from './cards/SuperChatCard'
+import { WordcloudCard } from './cards/WordcloudCard'
 
 type Item = {
   key: string
@@ -86,11 +87,17 @@ const ITEMS: Item[] = [
         wrapPadding={12}
         gradStart="#f2a053"
         gradEnd="#ef5f5f"
-        topBadge="天空总督"
+        topBadge="新晋总督"
         bottomBadge="晨风UP主"
-        message={'"天空总督"上任\n"晨风UP主"大航海舰队总督！'}
+        message={'"新晋总督"加入\n"晨风UP主"大航海舰队！'}
       />
     ),
+  },
+  {
+    key: 'wordcloud',
+    caption: '弹幕词云',
+    meta: 'live-summary',
+    node: <WordcloudCard />,
   },
   {
     key: 'offline',
@@ -105,7 +112,7 @@ export function Gallery() {
     <section className="section" id="gallery">
       <div className="section-inner">
         <div className="section-label">推送卡片</div>
-        <h2>一套设计语言，四种场景。</h2>
+        <h2>一套设计语言，六种场景。</h2>
         <p className="lede">磨砂玻璃 + 渐变背景 + 圆角 12px，像素级还原 B 站观感。横向滑动查看 →</p>
 
         <div className="gallery-scroll">

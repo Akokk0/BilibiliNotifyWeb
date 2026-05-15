@@ -101,4 +101,48 @@
     "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN",
     "Noto Sans CJK SC", "Noto Sans SC", sans-serif;
   --bn-font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, "Liberation Mono", monospace;
+
+  /* ── Layout / dark-mode-aware surfaces ────────────────────────────────────
+     Background, surface, nav, and section gradients pivot between light and
+     dark themes. Brand colors (pink/blue), push-card visuals and feature
+     gradient blocks intentionally stay on a single fixed palette so the
+     "B 站推送卡片" sample regions still feel like product screenshots in
+     either mode. */
+  --bn-bg-page: #fafbff;
+  --bn-bg-elevated: #ffffff;
+  --bn-bg-nav: rgba(255, 255, 255, 0.72);
+  --bn-bg-card-soft: #ffffff;
+  --bn-border-subtle: rgba(0, 0, 0, 0.05);
+  --bn-border-default: rgba(0, 0, 0, 0.06);
+  --bn-hero-bg:
+    radial-gradient(ellipse 900px 600px at 20% 10%, rgba(251, 114, 153, 0.15), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 85% 30%, rgba(0, 174, 236, 0.13), transparent 60%),
+    linear-gradient(180deg, #fdfcff 0%, #f0e9ff 50%, #e4eeff 100%);
+  --bn-features-bg:
+    radial-gradient(ellipse 600px 400px at 90% 20%, rgba(251, 114, 153, 0.07), transparent 60%),
+    #fafbff;
+  --bn-gallery-bg: linear-gradient(180deg, #fafbff 0%, #f3edff 50%, #e8f1ff 100%);
+  --bn-deploy-bg: linear-gradient(180deg, #fafbff 0%, #f0ebff 100%);
+}
+
+[data-theme="dark"] {
+  --bn-text-primary: #f0f1f5;
+  --bn-text-secondary: #8b8d96;
+  --bn-text-tertiary: #b3b5bd;
+
+  --bn-bg-page: #0d0e14;
+  --bn-bg-elevated: #16171f;
+  --bn-bg-nav: rgba(13, 14, 20, 0.72);
+  --bn-bg-card-soft: #1a1b25;
+  --bn-border-subtle: rgba(255, 255, 255, 0.06);
+  --bn-border-default: rgba(255, 255, 255, 0.08);
+  --bn-hero-bg:
+    radial-gradient(ellipse 900px 600px at 20% 10%, rgba(251, 114, 153, 0.18), transparent 60%),
+    radial-gradient(ellipse 800px 500px at 85% 30%, rgba(0, 174, 236, 0.16), transparent 60%),
+    linear-gradient(180deg, #0d0e14 0%, #161224 50%, #0f1424 100%);
+  --bn-features-bg:
+    radial-gradient(ellipse 600px 400px at 90% 20%, rgba(251, 114, 153, 0.1), transparent 60%),
+    #0d0e14;
+  --bn-gallery-bg: linear-gradient(180deg, #0d0e14 0%, #16121f 50%, #0e1424 100%);
+  --bn-deploy-bg: linear-gradient(180deg, #0d0e14 0%, #16121f 100%);
 }

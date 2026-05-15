@@ -8,8 +8,8 @@ import { ArrowRight, GitHub } from './icons'
 type FloatStyle = CSSProperties & { '--r': string }
 
 const STAT_CARDS = [
-  { n: '6', l: '模块化插件包' },
-  { n: '4+', l: '推送卡片类型' },
+  { n: '9', l: '核心模块' },
+  { n: '7+', l: '推送卡片类型' },
   { n: '24/7', l: '不间断监听' },
 ]
 
@@ -38,8 +38,7 @@ export function Hero() {
     <header className="hero">
       <div className="hero-copy">
         <div className="hero-eyebrow">
-          <span className="dot" />
-          基于 Koishi 的 B 站推送插件
+          <span className="dot" />B 站推送 · Standalone &amp; Koishi 双端
         </div>
         <h1>
           UP 主一<span className="accent-pink">开播</span>，
@@ -53,8 +52,8 @@ export function Hero() {
         <p className="hero-maid">主人，让女仆来帮您盯梢吧 (๑•̀ㅂ•́)و✧</p>
 
         <div className="hero-ctas">
-          <a href="#quickstart" className="btn btn-primary">
-            立即安装
+          <a href="#deploy" className="btn btn-primary">
+            选择部署方式
             <ArrowRight stroke="white" />
           </a>
           <a
@@ -106,7 +105,7 @@ export function Hero() {
           <DynamicCard
             width={280}
             variant="simple"
-            upName="Minecraft官方"
+            upName="晨风UP主"
             timestamp="刚刚 · 2026-04-21"
             topic="#沙盒游戏"
             content="今天挖了一整天的钻石！终于凑齐了一整套装备 (●‘◡‘●)"

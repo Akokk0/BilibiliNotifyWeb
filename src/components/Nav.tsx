@@ -1,37 +1,40 @@
+import { Link, NavLink } from 'react-router-dom'
 import { ArrowRightSmall } from './icons'
 
-const LINKS = [
-  { href: '#features', label: '功能' },
-  { href: '#gallery', label: '推送卡片' },
-  { href: '#console', label: '控制台' },
-  { href: '#quickstart', label: '快速开始' },
-  { href: 'https://github.com/Akokk0/bilibili-notify', label: 'GitHub', external: true },
+const PAGE_LINKS = [
+  { to: '/', label: '总览', end: true },
+  { to: '/dashboard', label: 'Web Dashboard' },
+  { to: '/standalone', label: 'Standalone 使用' },
+  { to: '/koishi', label: 'Koishi 使用' },
+  { to: '/ai', label: 'AI 女仆' },
 ]
 
 export function Nav() {
   return (
     <nav className="nav">
-      <a href="#top" className="nav-brand">
+      <Link to="/" className="nav-brand">
         <img src="/logo-icon.png" alt="Bilibili Notify" />
         Bilibili Notify
-        <span className="sub">/ for Koishi</span>
-      </a>
+      </Link>
       <div className="nav-links">
-        {LINKS.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            target={link.external ? '_blank' : undefined}
-            rel={link.external ? 'noreferrer' : undefined}
+        {PAGE_LINKS.map((link) => (
+          <NavLink
+            key={link.to}
+            to={link.to}
+            end={link.end}
+            className={({ isActive }) => (isActive ? 'is-active' : undefined)}
           >
             {link.label}
-          </a>
+          </NavLink>
         ))}
+        <a href="https://github.com/Akokk0/bilibili-notify" target="_blank" rel="noreferrer">
+          GitHub
+        </a>
       </div>
-      <a href="#quickstart" className="nav-cta">
-        安装插件
+      <Link to="/#deploy" className="nav-cta">
+        选择部署方式
         <ArrowRightSmall stroke="white" />
-      </a>
+      </Link>
     </nav>
   )
 }

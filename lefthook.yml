@@ -3,13 +3,13 @@ pre-commit:
   commands:
     biome:
       glob: "*.{ts,tsx,js,jsx,mjs,json,css,html}"
-      run: pnpm exec biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
+      run: vp exec biome check --write --no-errors-on-unmatched --files-ignore-unknown=true {staged_files}
       stage_fixed: true
     typecheck:
       glob: "*.{ts,tsx}"
-      run: pnpm exec tsc -b --noEmit
+      run: vp exec tsc -b --noEmit
 
 commit-msg:
   commands:
     commitlint:
-      run: pnpm exec commitlint --edit {1}
+      run: vp exec commitlint --edit {1}

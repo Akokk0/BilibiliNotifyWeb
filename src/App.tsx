@@ -1,23 +1,21 @@
-import { Console } from './components/Console'
-import { CtaBand } from './components/CtaBand'
-import { Features } from './components/Features'
-import { Footer } from './components/Footer'
-import { Gallery } from './components/Gallery'
-import { Hero } from './components/Hero'
-import { Nav } from './components/Nav'
-import { Quickstart } from './components/Quickstart'
+import { Route, Routes } from 'react-router-dom'
+import { Layout } from './components/Layout'
+import { AI } from './pages/AI'
+import { Dashboard } from './pages/Dashboard'
+import { Home } from './pages/Home'
+import { Koishi } from './pages/Koishi'
+import { Standalone } from './pages/Standalone'
 
 export default function App() {
   return (
-    <>
-      <Nav />
-      <Hero />
-      <Features />
-      <Gallery />
-      <Console />
-      <Quickstart />
-      <CtaBand />
-      <Footer />
-    </>
+    <Routes>
+      <Route element={<Layout />}>
+        <Route path="/" element={<Home />} />
+        <Route path="/standalone" element={<Standalone />} />
+        <Route path="/koishi" element={<Koishi />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/ai" element={<AI />} />
+      </Route>
+    </Routes>
   )
 }
