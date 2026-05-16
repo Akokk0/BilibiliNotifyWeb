@@ -175,7 +175,7 @@ const CONSOLE_FEATURES = [
     title: '状态实时显示',
     desc: (
       <>
-        登录状态、订阅数量、推送日志,配 <code>@koishijs/plugin-status</code> 看更细。
+        登录状态、订阅数量、推送日志,配 <code>@koishijs/plugin-notifier</code> 看更细。
       </>
     ),
   },
@@ -394,8 +394,9 @@ export function Koishi() {
           <div className="section-label">聊天指令</div>
           <h2>群里发一句,女仆秒回。</h2>
           <p className="lede">
-            所有指令都在 Koishi 标准命令系统里,默认 authority ≥ 3(管理类 <code>bn.*</code> 需 ≥ 5)。
-            把女仆拉进群当群秘,比开 Dashboard 还快。
+            所有指令都在 Koishi 标准命令系统里:<code>bili.*</code> 需 authority ≥ 3,
+            <code>bn.*</code> 与 <code>status.*</code> 需 ≥ 5。 把女仆拉进群当群秘,比开 Dashboard
+            还快。
           </p>
 
           <SnsChatMock />
@@ -531,7 +532,7 @@ function PluginMarketMock() {
 }
 
 function CommandHint() {
-  const commands = ['bili list', 'bili ll', 'bili dyn <uid>', 'bili live <uid>', 'bn restart']
+  const commands = ['bili list', 'bili ll', 'bn restart']
   return (
     <div
       style={{
@@ -554,7 +555,8 @@ function CommandHint() {
         }}
       >
         <SparkIcon />
-        常用聊天指令(普通指令需 authority ≥ 3,<code>bn.*</code> 需 ≥ 5)
+        常用聊天指令(<code>bili.*</code> 需 authority ≥ 3,<code>bn.*</code> / <code>status.*</code>{' '}
+        需 ≥ 5)
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {commands.map((c) => (
@@ -583,7 +585,7 @@ function CommandHint() {
         }}
       >
         <code>bili list</code> 查所有订阅状态;<code>bili ll</code> 只看哪些在播;{' '}
-        <code>bili dyn</code> 抓单条动态;<code>bn restart</code> 重新加载订阅(管理员)。
+        <code>bn restart</code> 重新加载订阅(管理员)。
       </div>
     </div>
   )

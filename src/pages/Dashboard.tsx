@@ -96,7 +96,7 @@ const FEATS: Feat[] = [
       </svg>
     ),
     h4: '推送历史',
-    p: '按天 jsonl 归档,每条带 UP 主头像 / 用户名快照,retentionDays 自动清理。',
+    p: '按天 jsonl 归档,每条带 UP 主头像 / 用户名快照,historyRetentionDays 自动清理。',
   },
   {
     variant: 'purple',
@@ -615,10 +615,12 @@ export function Dashboard() {
             <S>master.key</S>
             {'       '}
             <C># AES-256 主密钥(自动生成)</C>
-            {'\n│   └── '}
+            {'\n│   ├── '}
             <S>cookies.json</S>
             {'     '}
             <C># 保存的 B 站登录 cookie</C>
+            {'\n│   └── '}
+            <S>config-secrets.enc</S> <C># AES-256-GCM 加密的 AI apiKey</C>
             {'\n├── '}
             <Y>state/</Y>
             {'\n│   ├── '}

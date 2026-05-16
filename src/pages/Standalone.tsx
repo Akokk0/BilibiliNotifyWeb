@@ -21,7 +21,7 @@ const ENV_VARS = [
     k: 'BN_DATA_DIR',
     desc: (
       <>
-        运行时状态目录,<b>声明为 Docker volume</b>,必须挂出来
+        运行时状态目录,<b>声明为 Docker volume</b>,必须挂出来;镜像内默认 /data,裸跑代码默认 ./data
       </>
     ),
     def: '/data',
@@ -236,12 +236,14 @@ export function Standalone() {
                   {'\n'}
                   <Y>cookieEncryptionKey</Y>: <S>{`"<留空走 BN_COOKIE_KEY,或自动生成>"`}</S>
                   {'\n'}
-                  <Y>dashboardAuth</Y>:{'\n'}
+                  <Y>auth</Y>:{'\n'}
                   {'  '}
-                  <Y>user</Y>: <S>{`"admin"`}</S>
+                  <Y>basicAuth</Y>:{'\n'}
+                  {'    '}
+                  <Y>username</Y>: <S>{`"admin"`}</S>
                   {'\n'}
-                  {'  '}
-                  <Y>pass</Y>: <S>{`"change-me"`}</S>
+                  {'    '}
+                  <Y>password</Y>: <S>{`"change-me"`}</S>
                 </Codeblock>
               }
             />
