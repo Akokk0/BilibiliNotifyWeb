@@ -546,9 +546,9 @@ export function AI() {
       <section className="docsec">
         <div className="docsec-inner">
           <div className="section-label">背后</div>
-          <h2>就是 6 个 Koishi 插件里的 AI 那个。</h2>
+          <h2>就是 9 个 npm 包里的一个。</h2>
           <p className="lede">
-            <code className="inline-code">koishi-plugin-bilibili-notify-ai</code> 提供{' '}
+            <code className="inline-code">@bilibili-notify/ai</code> 提供{' '}
             <code className="inline-code">CommentaryGenerator</code> —— OpenAI 兼容的{' '}
             <code className="inline-code">comment</code> / <code className="inline-code">chat</code>{' '}
             调用。两端共享同一份 generator。
