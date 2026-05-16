@@ -61,7 +61,7 @@ const ITEMS: Item[] = [
             樱花粉丝
           </>
         }
-        message="主播加油！你的直播真的太好看了，一直支持你！"
+        message="主播加油！你的直播真的太好看了！"
         gradStart="#a29bfe"
         gradEnd="#6c5ce7"
       />
@@ -98,9 +98,9 @@ const ITEMS: Item[] = [
         wrapPadding={12}
         gradStart="#f2a053"
         gradEnd="#ef5f5f"
-        topBadge="新晋总督"
+        topBadge="天空总督"
         bottomBadge="晨风UP主"
-        message={'"新晋总督"加入\n"晨风UP主"大航海舰队！'}
+        message={'"天空总督"上任\n"晨风UP主"大航海舰队总督！'}
       />
     ),
   },
@@ -123,7 +123,7 @@ export function Gallery() {
     <section className="section" id="gallery">
       <div className="section-inner">
         <div className="section-label">推送卡片</div>
-        <h2>一套设计语言，六种场景。</h2>
+        <h2>一套设计语言，七张样卡。</h2>
         <p className="lede">磨砂玻璃 + 渐变背景 + 圆角 12px，像素级还原 B 站观感。横向滑动查看 →</p>
 
         <div className="gallery-scroll">

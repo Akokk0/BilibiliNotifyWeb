@@ -2383,6 +2383,13 @@ a {
   padding: 2px 7px;
   border-radius: 4px;
 }
+.bn-dash-panel-title .sub {
+  display: block;
+  font-size: 9px;
+  color: var(--bn-text-secondary);
+  font-weight: 600;
+  margin-top: 1px;
+}
 .bn-dash-uprow {
   display: flex;
   align-items: center;
@@ -2440,7 +2447,7 @@ a {
 }
 .bn-dash-fanstable {
   display: grid;
-  grid-template-columns: 1fr 44px 36px;
+  grid-template-columns: 1fr 50px 40px 40px;
   gap: 4px 6px;
   font-size: 10px;
   align-items: center;

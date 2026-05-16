@@ -174,15 +174,22 @@ const FEATS: Feat[] = [
   },
 ]
 
-type Act = { when: string; m: CastMember; dur: string }
+type Act = { when: string; m: CastMember; kind: '开播' | '下播' | '动态'; detail: string }
 
+// 「开播」事件的 UP 就是「正在直播」面板那 3 位(战术老猫 / 像素老张 / 银月喵),
+// 与「● 3 人在播」「正在直播 3/6」口径一致;其余是下播 / 动态历史事件。
 const ACTS: Act[] = [
-  { when: '1分钟前', m: CAST.laomao, dur: '2分37秒' },
-  { when: '12分钟前', m: CAST.moyu, dur: '1小时22分23秒' },
-  { when: '15分钟前', m: CAST.yinyue, dur: '48分1秒' },
-  { when: '16分钟前', m: CAST.chenfeng, dur: '2小时4分30秒' },
-  { when: '56分钟前', m: CAST.pixel, dur: '24分5秒' },
-  { when: '1小时前', m: CAST.pixel, dur: '15分21秒' },
+  { when: '1分钟前', m: CAST.laomao, kind: '开播', detail: '开始直播:今晚冲个段位,顺便陪你们摸鱼' },
+  {
+    when: '8分钟前',
+    m: CAST.chenfeng,
+    kind: '动态',
+    detail: '发布新动态:这周更新计划排好了,周三见',
+  },
+  { when: '15分钟前', m: CAST.yinyue, kind: '开播', detail: '开始直播:睡前杂谈,来听点碎碎念~' },
+  { when: '42分钟前', m: CAST.moyu, kind: '下播', detail: '结束直播,本场 1小时22分23秒' },
+  { when: '56分钟前', m: CAST.pixel, kind: '开播', detail: '开始直播:新版本生电主城开工!' },
+  { when: '2小时前', m: CAST.shanhai, kind: '下播', detail: '结束直播,本场 48分1秒' },
 ]
 
 export function Dashboard() {
@@ -286,7 +293,10 @@ export function Dashboard() {
               <div className="bn-dash-2col">
                 <div className="bn-dash-panel">
                   <div className="bn-dash-panel-title">
-                    正在直播
+                    <div>
+                      正在直播
+                      <span className="sub">实时刷新</span>
+                    </div>
                     <span className="live-cnt">● 3 人在播</span>
                   </div>
                   <div className="bn-dash-uprow">
@@ -327,36 +337,41 @@ export function Dashboard() {
                 <div className="bn-dash-panel">
                   <div className="bn-dash-panel-title">
                     粉丝数变化
-                    <span className="right">起点 · 24h</span>
+                    <span className="right">起点 · 24h · 7d</span>
                   </div>
                   <div className="bn-dash-fanstable">
                     <div className="h l">UP主</div>
                     <div className="h">起点</div>
                     <div className="h">24h</div>
+                    <div className="h">7d</div>
                     <div className="u">
                       <Ava m={CAST.pixel} className="lava" />
                       <span className="n">{CAST.pixel.name}</span>
                     </div>
-                    <div className="d up">+1,767</div>
-                    <div className="d up">+1,444</div>
+                    <div className="d up">+12,840</div>
+                    <div className="d up">+2,160</div>
+                    <div className="d up">+9,470</div>
                     <div className="u">
                       <Ava m={CAST.laomao} className="lava" />
                       <span className="n">{CAST.laomao.name}</span>
                     </div>
-                    <div className="d up">+54</div>
-                    <div className="d up">+53</div>
+                    <div className="d up">+9,510</div>
+                    <div className="d up">+1,740</div>
+                    <div className="d up">+6,920</div>
                     <div className="u">
                       <Ava m={CAST.yinyue} className="lava" />
                       <span className="n">{CAST.yinyue.name}</span>
                     </div>
-                    <div className="d up">+45</div>
-                    <div className="d up">+42</div>
+                    <div className="d up">+2,070</div>
+                    <div className="d up">+318</div>
+                    <div className="d up">+1,160</div>
                     <div className="u">
                       <Ava m={CAST.moyu} className="lava" />
                       <span className="n">{CAST.moyu.name}</span>
                     </div>
-                    <div className="d down">−10</div>
-                    <div className="d dash">—</div>
+                    <div className="d down">−210</div>
+                    <div className="d down">−12</div>
+                    <div className="d down">−47</div>
                   </div>
                 </div>
               </div>
@@ -442,12 +457,12 @@ export function Dashboard() {
                     <div className="dot" />
                     <Ava m={a.m} className="av" />
                     <div className="msg">
-                      <span className="kind">直播</span>
+                      <span className="kind">{a.kind}</span>
                       <b>{a.m.name}</b>
                       <span>
                         {' '}
-                        · {a.m.name} 正在直播,已播 {a.dur},累计观看:暂未获取到 live.bilibili.com/
-                        {a.m.room}
+                        · {a.detail}
+                        {a.kind === '开播' ? ` · live.bilibili.com/${a.m.room}` : ''}
                       </span>
                     </div>
                     <div className="deliver">
@@ -492,12 +507,12 @@ export function Dashboard() {
             </div>
 
             {[
-              { m: CAST.pixel, s: ['+1,339', 'up'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
-              { m: CAST.yinyue, s: ['+34', 'up'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
-              { m: CAST.shanhai, s: ['−32', 'down'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
-              { m: CAST.laomao, s: ['+18', 'up'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
-              { m: CAST.moyu, s: ['+2,841', 'up'], h24: ['+124', 'up'], d7: ['+480', 'up'] },
-              { m: CAST.chenfeng, s: ['+8,420', 'up'], h24: ['+245', 'up'], d7: ['+1,820', 'up'] },
+              { m: CAST.pixel, s: ['+12,840', 'up'], h24: ['+2,160', 'up'], d7: ['+9,470', 'up'] },
+              { m: CAST.laomao, s: ['+9,510', 'up'], h24: ['+1,740', 'up'], d7: ['+6,920', 'up'] },
+              { m: CAST.shanhai, s: ['+3,180', 'up'], h24: ['+205', 'up'], d7: ['+1,540', 'up'] },
+              { m: CAST.yinyue, s: ['+2,070', 'up'], h24: ['+318', 'up'], d7: ['+1,160', 'up'] },
+              { m: CAST.chenfeng, s: ['+540', 'up'], h24: ['+18', 'up'], d7: ['+96', 'up'] },
+              { m: CAST.moyu, s: ['−210', 'down'], h24: ['−12', 'down'], d7: ['−47', 'down'] },
             ].map((r) => (
               <div key={r.m.id} className="fans-list-row">
                 <Ava m={r.m} className="ava" />
