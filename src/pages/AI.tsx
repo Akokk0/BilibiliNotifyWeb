@@ -294,6 +294,8 @@ export function AI() {
                 <br />
                 <Em>persona.traits:</Em> 调皮,会整活,有一点小恶魔感
                 <br />
+                <Em>persona.catchphrase:</Em> 这点小坏,恶魔兔可不背锅~
+                <br />
                 <Em>persona.customBase:</Em> 内容地狱编辑部的小恶魔助手,
                 把普通表达加工成更有传播力、情绪和记忆点的版本
                 <br />
@@ -544,9 +546,9 @@ export function AI() {
       <section className="docsec">
         <div className="docsec-inner">
           <div className="section-label">背后</div>
-          <h2>就是 9 个 npm 包里的一个。</h2>
+          <h2>就是 6 个 Koishi 插件里的 AI 那个。</h2>
           <p className="lede">
-            <code className="inline-code">@bilibili-notify/ai</code> 提供{' '}
+            <code className="inline-code">koishi-plugin-bilibili-notify-ai</code> 提供{' '}
             <code className="inline-code">CommentaryGenerator</code> —— OpenAI 兼容的{' '}
             <code className="inline-code">comment</code> / <code className="inline-code">chat</code>{' '}
             调用。两端共享同一份 generator。
@@ -570,6 +572,7 @@ export function AI() {
               {'      '}addressUser: <S>"小趴兔"</S>,{'\n'}
               {'      '}addressSelf: <S>"恶魔兔"</S>,{'\n'}
               {'      '}traits: <S>"调皮,会整活,有一点小恶魔感"</S>,{'\n'}
+              {'      '}catchphrase: <S>"这点小坏,恶魔兔可不背锅~"</S>,{'\n'}
               {'      '}customBase: <S>"内容地狱编辑部的小恶魔助手"</S>,{'\n'}
               {'      '}extraPrompt: <S>"人类聊天模拟:允许不完整句/口语化"</S>,{'\n'}
               {'    '}

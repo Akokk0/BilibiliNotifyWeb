@@ -29,7 +29,7 @@ type PluginRow = {
 
 const PLUGINS: PluginRow[] = [
   {
-    name: 'bilibili-notify',
+    name: 'koishi-plugin-bilibili-notify',
     desc: 'core · 扫码登录 + 订阅管理',
     gradient: 'linear-gradient(135deg, #FB7299, #e84393)',
     badge: { label: '必装', tone: 'pink' },
@@ -52,7 +52,7 @@ const PLUGINS: PluginRow[] = [
     ),
   },
   {
-    name: 'bilibili-notify-live',
+    name: 'koishi-plugin-bilibili-notify-live',
     desc: '直播 WS · SC · 大航海',
     gradient: 'linear-gradient(135deg, #ff7675, #d63031)',
     icon: (
@@ -74,7 +74,7 @@ const PLUGINS: PluginRow[] = [
     ),
   },
   {
-    name: 'bilibili-notify-dynamic',
+    name: 'koishi-plugin-bilibili-notify-dynamic',
     desc: '动态轮询 cron',
     gradient: 'linear-gradient(135deg, #a29bfe, #6c5ce7)',
     icon: (
@@ -95,7 +95,7 @@ const PLUGINS: PluginRow[] = [
     ),
   },
   {
-    name: 'bilibili-notify-image',
+    name: 'koishi-plugin-bilibili-notify-image',
     desc: 'puppeteer 渲染卡片',
     gradient: 'linear-gradient(135deg, #4ebcec, #b494e5)',
     icon: (
@@ -118,7 +118,7 @@ const PLUGINS: PluginRow[] = [
     ),
   },
   {
-    name: 'bilibili-notify-advanced-subscription',
+    name: 'koishi-plugin-bilibili-notify-advanced-subscription',
     desc: '高级订阅 schema',
     gradient: 'linear-gradient(135deg, #fdcb6e, #e17055)',
     icon: (
@@ -143,7 +143,7 @@ const PLUGINS: PluginRow[] = [
     ),
   },
   {
-    name: 'bilibili-notify-ai',
+    name: 'koishi-plugin-bilibili-notify-ai',
     desc: '智能女仆 · 直播总结',
     gradient: 'linear-gradient(135deg, #18191C, #2d3436)',
     icon: (

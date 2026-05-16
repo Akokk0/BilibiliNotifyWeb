@@ -29,7 +29,7 @@ const FEATURES: Feature[] = [
         开播毫秒级推送。SC、大航海实时捕获,下播后自动生成词云与 AI 总结,断线自动重连。
       </>
     ),
-    pkg: '@bilibili-notify/live',
+    pkg: 'koishi-plugin-bilibili-notify-live',
     width: 'w3',
     gradient: 'linear-gradient(135deg, #ff7675 0%, #d63031 100%)',
   },
@@ -44,7 +44,7 @@ const FEATURES: Feature[] = [
       </>
     ),
     desc: 'Cron 定时抓取,文字、视频、专栏、转发全类型覆盖。内置去重过滤,命中后直接交给 image 渲染成推送卡片。',
-    pkg: '@bilibili-notify/dynamic',
+    pkg: 'koishi-plugin-bilibili-notify-dynamic',
     width: 'w3',
     gradient: 'linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%)',
   },
@@ -59,7 +59,7 @@ const FEATURES: Feature[] = [
       </>
     ),
     desc: 'Vue SSR + UnoCSS 服务端渲染,Chromium 截图输出高清卡片,CJK 字体与 emoji 自动回退。',
-    pkg: '@bilibili-notify/image',
+    pkg: 'koishi-plugin-bilibili-notify-image',
     width: 'w2',
     gradient: 'linear-gradient(135deg, #4ebcec 0%, #b494e5 100%)',
   },
@@ -104,7 +104,7 @@ const FEATURES: Feature[] = [
         (*´∀`)~♡
       </>
     ),
-    pkg: '@bilibili-notify/ai',
+    pkg: 'koishi-plugin-bilibili-notify-ai',
     width: 'w6',
     gradient: 'linear-gradient(135deg, #18191c 0%, #2d3436 100%)',
     className: 'f-ai',
@@ -162,10 +162,11 @@ export function Features() {
     <section className="section" id="features">
       <div className="section-inner">
         <div className="section-label">业务模块</div>
-        <h2>九个平台中立的核心模块,双端共用。</h2>
+        <h2>九个核心模块,双端共用。</h2>
         <p className="lede">
-          所有模块以 <code className="inline-pkg">@bilibili-notify/*</code> 发布, 既驱动 Standalone
-          后端,也驱动 Koishi 插件 —— 一套代码,两条部署路径。
+          对外的 Koishi 插件以 <code className="inline-pkg">koishi-plugin-bilibili-notify*</code>{' '}
+          发布,内部能力包以 <code className="inline-pkg">@bilibili-notify/*</code> 发布 ——
+          同一套代码,既驱动 Standalone 后端,也驱动 Koishi 插件,两条部署路径。
         </p>
 
         <div className="feat-grid">

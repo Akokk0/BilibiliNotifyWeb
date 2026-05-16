@@ -1,6 +1,6 @@
 # Bilibili Notify Web
 
-[Bilibili Notify](https://github.com/initialencounter/bilibili-notify) 的宣传站点 —— 一个基于 [Koishi](https://github.com/koishijs/koishi) 的 B 站推送插件。
+[Bilibili Notify](https://github.com/Akokk0/bilibili-notify) 的宣传站点 —— 一个基于 [Koishi](https://github.com/koishijs/koishi) 的 B 站推送插件。
 
 直播开播、动态更新、Super Chat、大航海全部渲染成精美卡片，推送到 Discord / QQ / Telegram。本仓库只承载落地页本身，插件源码在上游仓库。
 

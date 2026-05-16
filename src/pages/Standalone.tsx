@@ -400,7 +400,7 @@ export function Standalone() {
               title="填模型连接"
               desc={
                 <>
-                  <code>apiKey</code> · <code>baseUrl</code>(OpenAI 兼容即可,DeepSeek / 智谱 /
+                  <code>apiKey</code> · <code>baseURL</code>(OpenAI 兼容即可,DeepSeek / 智谱 /
                   OneAPI 都行) · <code>model</code>(如 <code>deepseek-chat</code> /{' '}
                   <code>gpt-4o-mini</code>)。日志等级可选给 AI 单独开个 debug。
                 </>
@@ -411,9 +411,11 @@ export function Standalone() {
               title="挑预设 或 自定义人格"
               desc={
                 <>
-                  预设里挑一个,或者切到 <b>custom</b> 自己写: <code>name</code>(女仆名)·{' '}
-                  <code>addressUser</code>(怎么称呼主人)· <code>addressSelf</code>(自称)·{' '}
-                  <code>traits</code>(性格描述)· <code>catchphrase</code>(口癖)。{' '}
+                  预设里挑一个(<code>preset</code>),或者切到 <b>custom</b> 自己写: <code>name</code>
+                  (女仆名)· <code>addressUser</code>(怎么称呼主人)· <code>addressSelf</code>(自称)·{' '}
+                  <code>traits</code>(性格描述)· <code>catchphrase</code>(口癖)·{' '}
+                  <code>customBase</code>(custom 时的核心人设)· <code>extraPrompt</code>
+                  (额外提示词)。{' '}
                   <Link
                     to="/ai"
                     style={{
