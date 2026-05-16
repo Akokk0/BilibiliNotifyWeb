@@ -5,6 +5,7 @@ import { LiveCard } from './cards/LiveCard'
 import { OfflineCard } from './cards/OfflineCard'
 import { SuperChatCard } from './cards/SuperChatCard'
 import { WordcloudCard } from './cards/WordcloudCard'
+import { CrownIcon, FlowerIcon } from './icons'
 
 type Item = {
   key: string
@@ -54,7 +55,12 @@ const ITEMS: Item[] = [
         width={260}
         amount="¥100"
         duration="5分钟"
-        badgeLabel="🌸 樱花粉丝"
+        badgeLabel={
+          <>
+            <FlowerIcon />
+            樱花粉丝
+          </>
+        }
         message="主播加油！你的直播真的太好看了，一直支持你！"
         gradStart="#a29bfe"
         gradEnd="#6c5ce7"
@@ -70,7 +76,12 @@ const ITEMS: Item[] = [
         width={260}
         amount="¥2000"
         duration="2小时"
-        badgeLabel="👑 传说至尊"
+        badgeLabel={
+          <>
+            <CrownIcon />
+            传说至尊
+          </>
+        }
         message="十年老粉，从0到百万，见证你的每一步！"
         gradStart="#ff7675"
         gradEnd="#d63031"

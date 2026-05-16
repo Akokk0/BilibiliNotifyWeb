@@ -1,4 +1,7 @@
 import type { ReactNode } from 'react'
+import { CommentIcon, LikeIcon, ShareIcon } from '../icons'
+
+type Stats = { share: string; comment: string; like: string }
 
 type Props = {
   width?: number
@@ -9,8 +12,16 @@ type Props = {
   topicColor?: string
   content?: string
   variant?: 'simple' | 'rich'
+  /** 头像渐变(默认沿用通用紫;传入可按 UP 区分) */
+  avatarGrad?: string
+  /** 头像首字(默认空;传入显示在头像中央) */
+  avatarLetter?: string
+  /** 互动数据(默认通用样例;传入可按 UP 区分) */
+  stats?: Stats
   children?: ReactNode
 }
+
+const DEFAULT_STATS: Stats = { share: '234', comment: '1,240', like: '8,432' }
 
 export function DynamicCard({
   width = 320,
@@ -21,6 +32,9 @@ export function DynamicCard({
   topicColor = '#00AEEC',
   content = '今天挖了一整天的钻石，终于凑齐了一整套钻石装备！感谢大家的陪伴 (●‘◡‘●)',
   variant = 'rich',
+  avatarGrad = 'linear-gradient(135deg,#a29bfe,#6c5ce7)',
+  avatarLetter = '',
+  stats = DEFAULT_STATS,
   children,
 }: Props) {
   const isSimple = variant === 'simple'
@@ -30,10 +44,13 @@ export function DynamicCard({
       <div className="bn-card">
         <div className="flex items-center gap-3 px-4 pt-3.5 pb-3">
           <div
-            className={`shrink-0 rounded-full border-[3px] border-white bg-[linear-gradient(135deg,#a29bfe,#6c5ce7)] shadow-[0_4px_8px_rgba(0,0,0,0.2)] ${
-              isSimple ? 'size-[46px]' : 'size-[52px]'
+            className={`flex shrink-0 items-center justify-center rounded-full border-[3px] border-white font-bold text-white shadow-[0_4px_8px_rgba(0,0,0,0.2)] ${
+              isSimple ? 'size-[46px] text-base' : 'size-[52px] text-lg'
             }`}
-          />
+            style={{ background: avatarGrad }}
+          >
+            {avatarLetter}
+          </div>
           <div>
             <div
               className={`font-bold ${isSimple ? 'text-[15px]' : 'text-[17px]'}`}
@@ -82,9 +99,18 @@ export function DynamicCard({
             isSimple ? 'py-2.5 text-xs' : 'py-3 text-[13px]'
           }`}
         >
-          <span>↗ 234</span>
-          <span>💬 1,240</span>
-          <span>👍 8,432</span>
+          <span className="inline-flex items-center gap-1">
+            <ShareIcon />
+            {stats.share}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <CommentIcon />
+            {stats.comment}
+          </span>
+          <span className="inline-flex items-center gap-1">
+            <LikeIcon />
+            {stats.like}
+          </span>
         </div>
       </div>
     </div>

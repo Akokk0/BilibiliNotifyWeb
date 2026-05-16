@@ -1,3 +1,5 @@
+import { TargetIcon } from '../icons'
+
 type Word = {
   text: string
   size: number
@@ -37,7 +39,7 @@ export function WordcloudCard({ width = 320, total = '本场弹幕：4,832', top
     >
       <div className="bn-card">
         <div className="flex items-center gap-2 px-4 pt-3.5 pb-2.5 text-[15px] font-bold text-bn-text-primary">
-          <span>🎯</span>
+          <TargetIcon />
           弹幕词云
         </div>
         <div className="mx-4 h-px bg-black/6" />

@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react'
+import type { CSSProperties, ReactNode } from 'react'
 
 type Props = {
   width?: number
@@ -7,7 +7,7 @@ type Props = {
   fromName?: string
   toName?: string
   message: string
-  badgeLabel: string
+  badgeLabel: ReactNode
   gradStart: string
   gradEnd: string
   wrapPadding?: number
@@ -69,7 +69,7 @@ export function SuperChatCard({
           }`}
         />
         <div
-          className={`rounded-[15px] bg-[var(--c1)] font-bold text-white ${
+          className={`inline-flex items-center gap-1.5 rounded-[15px] bg-[var(--c1)] font-bold text-white ${
             isCompact ? 'mt-2 px-3 py-1 text-[13px]' : 'mt-2.5 px-3.5 py-[5px] text-[13px]'
           }`}
         >

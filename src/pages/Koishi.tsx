@@ -7,9 +7,13 @@ import {
   ListIcon,
   PackageIcon,
   PaperPlane,
+  PulseIcon,
   QrIcon,
+  SparkIcon,
+  SwapIcon,
   UserIcon,
 } from '../components/icons'
+import { CAST } from '../components/shared/cast'
 import { FAQ, type FAQItem } from '../components/shared/FAQ'
 import { NextStrip } from '../components/shared/NextStrip'
 import { Step, StepList } from '../components/shared/Step'
@@ -154,19 +158,19 @@ const PLUGINS: PluginRow[] = [
 
 const CONSOLE_FEATURES = [
   {
-    ic: '⚡',
+    ic: <QrIcon />,
     icBg: 'linear-gradient(135deg, #FB7299, #e84393)',
     title: '扫码登录',
     desc: '打开 B 站 App 扫一下就好,登录凭证由核心包 AES 加密本地存。',
   },
   {
-    ic: '✓',
+    ic: <FormIcon />,
     icBg: 'linear-gradient(135deg, #00AEEC, #0984e3)',
     title: '可视化订阅',
     desc: 'Koishi 标准 Schema 表单:UP 主 UID、推送目标、消息类型,所见即所得。',
   },
   {
-    ic: '◎',
+    ic: <PulseIcon />,
     icBg: 'linear-gradient(135deg, #a29bfe, #6c5ce7)',
     title: '状态实时显示',
     desc: (
@@ -176,18 +180,18 @@ const CONSOLE_FEATURES = [
     ),
   },
   {
-    ic: '↔',
+    ic: <SwapIcon />,
     icBg: 'linear-gradient(135deg, #fdcb6e, #e17055)',
     title: '复用 Koishi 适配器',
     desc: 'Discord / QQ / Telegram / Lark / Slack…… Koishi 装了哪个适配,bilibili-notify 就能往哪儿推。',
   },
-] satisfies Array<{ ic: string; icBg: string; title: string; desc: ReactNode }>
+] satisfies Array<{ ic: ReactNode; icBg: string; title: string; desc: ReactNode }>
 
 const SUBS = [
-  { uid: '1194210119', name: '兔月眠子' },
-  { uid: '194484313', name: 'Asaki' },
-  { uid: '686127', name: '籽岷' },
-  { uid: '1629347259', name: '红警HBK08' },
+  { uid: CAST.chenfeng.uid, name: CAST.chenfeng.name, live: false },
+  { uid: CAST.yinyue.uid, name: CAST.yinyue.name, live: true },
+  { uid: CAST.pixel.uid, name: CAST.pixel.name, live: false },
+  { uid: CAST.laomao.uid, name: CAST.laomao.name, live: true },
 ]
 
 const FAQS: FAQItem[] = [
@@ -544,9 +548,13 @@ function CommandHint() {
           fontWeight: 700,
           color: 'var(--bn-pink)',
           marginBottom: 10,
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
         }}
       >
-        💡 常用聊天指令(普通指令需 authority ≥ 3,<code>bn.*</code> 需 ≥ 5)
+        <SparkIcon />
+        常用聊天指令(普通指令需 authority ≥ 3,<code>bn.*</code> 需 ≥ 5)
       </div>
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
         {commands.map((c) => (
@@ -815,28 +823,19 @@ function SnsChatMock() {
         <div className="sns-msg sns-in">
           <div className="sns-ava sns-ava-bot" />
           <div className="sns-bubble sns-bubble-in">
-            <div className="sns-line">
-              <span className="sns-uid">[UID:1194210119]</span> 「兔月眠子」{' '}
-              <span className="sns-status sns-off">未开播</span>
-            </div>
-            <div className="sns-line">
-              <span className="sns-uid">[UID:194484313]</span> 「Asaki」{' '}
-              <span className="sns-status sns-on">
-                <span className="sns-on-dot" />
-                正在直播
-              </span>
-            </div>
-            <div className="sns-line">
-              <span className="sns-uid">[UID:686127]</span> 「籽岷」{' '}
-              <span className="sns-status sns-off">未开播</span>
-            </div>
-            <div className="sns-line">
-              <span className="sns-uid">[UID:1629347259]</span> 「红警HBK08」{' '}
-              <span className="sns-status sns-on">
-                <span className="sns-on-dot" />
-                正在直播
-              </span>
-            </div>
+            {SUBS.map((s) => (
+              <div key={s.uid} className="sns-line">
+                <span className="sns-uid">[UID:{s.uid}]</span> 「{s.name}」{' '}
+                {s.live ? (
+                  <span className="sns-status sns-on">
+                    <span className="sns-on-dot" />
+                    正在直播
+                  </span>
+                ) : (
+                  <span className="sns-status sns-off">未开播</span>
+                )}
+              </div>
+            ))}
           </div>
         </div>
 

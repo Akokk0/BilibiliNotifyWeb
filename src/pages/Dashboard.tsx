@@ -1,17 +1,11 @@
 import { useHead } from '@unhead/react'
 import type { ReactNode } from 'react'
+import { SparkIcon } from '../components/icons'
+import { Ava } from '../components/shared/Ava'
 import { C, Codeblock, S, Y } from '../components/shared/Codeblock'
+import { CAST, type CastMember } from '../components/shared/cast'
 import { NextStrip } from '../components/shared/NextStrip'
 import { SubHero } from '../components/shared/SubHero'
-
-const AV = {
-  fanshi: '/uploads/2608aaa45309c77ac88fbfaa40e160b8c7892985.jpg',
-  laofei: '/uploads/25d6b747d51cd07f6ae01a1145225f9be7fbdc5d.jpg',
-  akashi: '/uploads/bb5a5976bc24ef49090a4f49c6e7c56161f567ef.jpg',
-  testv: '/uploads/34ccaf9461c67482e3164675c0036e94df18b7a7.jpg',
-  bimu: '/uploads/94de2845baf82403150838ba9beb5ca19fe45fa0.jpg',
-  cnboy: '/uploads/ffb50dd4e712386eb888030ebc6f4aea3a65cd8e.jpg',
-}
 
 type Feat = { variant?: string; icon: ReactNode; h4: string; p: string }
 
@@ -180,45 +174,15 @@ const FEATS: Feat[] = [
   },
 ]
 
-type Act = { when: string; av: string; name: string; body: string }
+type Act = { when: string; m: CastMember; dur: string }
 
 const ACTS: Act[] = [
-  {
-    when: '1分钟前',
-    av: AV.fanshi,
-    name: '泛式',
-    body: '泛式 正在直播,已播 2分37秒,累计观看:暂未获取到 https://live.bilibili.com/33989',
-  },
-  {
-    when: '12分钟前',
-    av: AV.testv,
-    name: 'TESTV官方频道',
-    body: 'TESTV官方频道 正在直播,已播 1小时22分23秒,累计观看:暂未获取到 https://live.bilibili.com/545189',
-  },
-  {
-    when: '15分钟前',
-    av: AV.akashi,
-    name: '明石飛行社',
-    body: '明石飛行社 正在直播,已播 48分1秒,累计观看:暂未获取到 https://live.bilibili.com/7501410',
-  },
-  {
-    when: '16分钟前',
-    av: AV.bimu,
-    name: '比目桑',
-    body: '比目桑 正在直播,已播 2小时4分30秒,累计观看:暂未获取到 https://live.bilibili.com/21582869',
-  },
-  {
-    when: '56分钟前',
-    av: AV.laofei,
-    name: '老飞宇66',
-    body: '老飞宇66 正在直播,已播 24分5秒,累计观看:暂未获取到 https://live.bilibili.com/7878',
-  },
-  {
-    when: '1小时前',
-    av: AV.laofei,
-    name: '老飞宇66',
-    body: '老飞宇66 正在直播,已播 15分21秒,累计观看:暂未获取到 https://live.bilibili.com/7878',
-  },
+  { when: '1分钟前', m: CAST.laomao, dur: '2分37秒' },
+  { when: '12分钟前', m: CAST.moyu, dur: '1小时22分23秒' },
+  { when: '15分钟前', m: CAST.yinyue, dur: '48分1秒' },
+  { when: '16分钟前', m: CAST.chenfeng, dur: '2小时4分30秒' },
+  { when: '56分钟前', m: CAST.pixel, dur: '24分5秒' },
+  { when: '1小时前', m: CAST.pixel, dur: '15分21秒' },
 ]
 
 export function Dashboard() {
@@ -326,32 +290,35 @@ export function Dashboard() {
                     <span className="live-cnt">● 3 人在播</span>
                   </div>
                   <div className="bn-dash-uprow">
-                    <img className="ava" src={AV.fanshi} alt="泛式" />
+                    <Ava m={CAST.laomao} className="ava" />
                     <div className="nm">
                       <div className="n">
-                        泛式<span className="area">主机游戏</span>
+                        {CAST.laomao.name}
+                        <span className="area">{CAST.laomao.area}</span>
                       </div>
-                      <div className="t">涨人超越！</div>
+                      <div className="t">今晚冲个段位,顺便陪你们摸鱼</div>
                     </div>
                     <div className="pop">◉ 1.4万</div>
                   </div>
                   <div className="bn-dash-uprow">
-                    <img className="ava" src={AV.laofei} alt="老飞宇66" />
+                    <Ava m={CAST.pixel} className="ava" />
                     <div className="nm">
                       <div className="n">
-                        老飞宇66<span className="area">三角洲行动</span>
+                        {CAST.pixel.name}
+                        <span className="area">{CAST.pixel.area}</span>
                       </div>
-                      <div className="t">正义之乌鸢鲁 11点下有</div>
+                      <div className="t">新版本生电主城开工!</div>
                     </div>
                     <div className="pop">◉ 6.8万</div>
                   </div>
                   <div className="bn-dash-uprow">
-                    <img className="ava" src={AV.akashi} alt="明石飛行社" />
+                    <Ava m={CAST.yinyue} className="ava" />
                     <div className="nm">
                       <div className="n">
-                        明石飛行社<span className="area">独立游戏</span>
+                        {CAST.yinyue.name}
+                        <span className="area">{CAST.yinyue.area}</span>
                       </div>
-                      <div className="t">更新了开新帧！开饭！</div>
+                      <div className="t">睡前杂谈,来听点碎碎念~</div>
                     </div>
                     <div className="pop">◉ 2125</div>
                   </div>
@@ -367,26 +334,26 @@ export function Dashboard() {
                     <div className="h">起点</div>
                     <div className="h">24h</div>
                     <div className="u">
-                      <img src={AV.laofei} alt="老飞宇66" />
-                      <span className="n">老飞宇66</span>
+                      <Ava m={CAST.pixel} className="lava" />
+                      <span className="n">{CAST.pixel.name}</span>
                     </div>
                     <div className="d up">+1,767</div>
                     <div className="d up">+1,444</div>
                     <div className="u">
-                      <img src={AV.fanshi} alt="泛式" />
-                      <span className="n">泛式</span>
+                      <Ava m={CAST.laomao} className="lava" />
+                      <span className="n">{CAST.laomao.name}</span>
                     </div>
                     <div className="d up">+54</div>
                     <div className="d up">+53</div>
                     <div className="u">
-                      <img src={AV.akashi} alt="明石飛行社" />
-                      <span className="n">明石飛行社</span>
+                      <Ava m={CAST.yinyue} className="lava" />
+                      <span className="n">{CAST.yinyue.name}</span>
                     </div>
                     <div className="d up">+45</div>
                     <div className="d up">+42</div>
                     <div className="u">
-                      <img src={AV.testv} alt="TESTV官方频道" />
-                      <span className="n">TESTV官方频道</span>
+                      <Ava m={CAST.moyu} className="lava" />
+                      <span className="n">{CAST.moyu.name}</span>
                     </div>
                     <div className="d down">−10</div>
                     <div className="d dash">—</div>
@@ -395,9 +362,12 @@ export function Dashboard() {
               </div>
 
               <div className="bn-dash-ai">
-                <div className="orb">✦</div>
+                <div className="orb">
+                  <SparkIcon />
+                </div>
                 <div>
-                  <b>AI 直播洞察 · 泛式</b> 正在直播,建议在结束后推送总结到游戏交流群一
+                  <b>AI 直播洞察 · {CAST.laomao.name}</b>{' '}
+                  正在直播,建议在结束后推送总结到游戏交流群一
                 </div>
                 <span className="more">查看完整总结 →</span>
               </div>
@@ -467,14 +437,18 @@ export function Dashboard() {
               </div>
               <div className="actfeed-body">
                 {ACTS.map((a) => (
-                  <div key={`${a.when}-${a.name}`} className="actrow">
+                  <div key={a.when} className="actrow">
                     <div className="when">{a.when}</div>
                     <div className="dot" />
-                    <img className="av" src={a.av} alt={a.name} />
+                    <Ava m={a.m} className="av" />
                     <div className="msg">
                       <span className="kind">直播</span>
-                      <b>{a.name}</b>
-                      <span> · {a.body}</span>
+                      <b>{a.m.name}</b>
+                      <span>
+                        {' '}
+                        · {a.m.name} 正在直播,已播 {a.dur},累计观看:暂未获取到 live.bilibili.com/
+                        {a.m.room}
+                      </span>
                     </div>
                     <div className="deliver">
                       <span className="to">→ BN测试群</span>
@@ -518,69 +492,19 @@ export function Dashboard() {
             </div>
 
             {[
-              {
-                ava: AV.laofei,
-                nm: '老飞宇66',
-                fc: '409.9万',
-                s: ['+1,339', 'up'],
-                h24: ['—', 'dash'],
-                d7: ['—', 'dash'],
-              },
-              {
-                ava: AV.akashi,
-                nm: '明石飛行社',
-                fc: '22.3万',
-                s: ['+34', 'up'],
-                h24: ['—', 'dash'],
-                d7: ['—', 'dash'],
-              },
-              {
-                ava: AV.cnboy,
-                nm: '中国BOY超级大猩猩',
-                fc: '1068.3万',
-                s: ['−32', 'down'],
-                h24: ['—', 'dash'],
-                d7: ['—', 'dash'],
-              },
-              {
-                ava: AV.fanshi,
-                nm: '泛式',
-                fc: '664.4万',
-                s: ['+18', 'up'],
-                h24: ['—', 'dash'],
-                d7: ['—', 'dash'],
-              },
-              {
-                letter: '红',
-                grad: 'linear-gradient(135deg,#ff6b6b,#c0392b)',
-                nm: '红警HBK08',
-                fc: '32.1万',
-                s: ['+2,841', 'up'],
-                h24: ['+124', 'up'],
-                d7: ['+480', 'up'],
-              },
-              {
-                letter: '籽',
-                grad: 'linear-gradient(135deg,#55efc4,#00b894)',
-                nm: '籽岷',
-                fc: '1028.4万',
-                s: ['+8,420', 'up'],
-                h24: ['+245', 'up'],
-                d7: ['+1,820', 'up'],
-              },
+              { m: CAST.pixel, s: ['+1,339', 'up'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
+              { m: CAST.yinyue, s: ['+34', 'up'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
+              { m: CAST.shanhai, s: ['−32', 'down'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
+              { m: CAST.laomao, s: ['+18', 'up'], h24: ['—', 'dash'], d7: ['—', 'dash'] },
+              { m: CAST.moyu, s: ['+2,841', 'up'], h24: ['+124', 'up'], d7: ['+480', 'up'] },
+              { m: CAST.chenfeng, s: ['+8,420', 'up'], h24: ['+245', 'up'], d7: ['+1,820', 'up'] },
             ].map((r) => (
-              <div key={r.nm} className="fans-list-row">
-                {r.letter ? (
-                  <div className="ava" style={{ background: r.grad }}>
-                    {r.letter}
-                  </div>
-                ) : (
-                  <img className="ava" src={r.ava} alt={r.nm} />
-                )}
+              <div key={r.m.id} className="fans-list-row">
+                <Ava m={r.m} className="ava" />
                 <div className="who">
-                  <div className="nm">{r.nm}</div>
+                  <div className="nm">{r.m.name}</div>
                   <div className="fc">
-                    <b>{r.fc}</b> 粉丝
+                    <b>{r.m.fans}</b> 粉丝
                   </div>
                 </div>
                 <div className="col">
@@ -699,11 +623,11 @@ export function Dashboard() {
             {'\n├── '}
             <Y>fans/</Y>
             {'\n│   ├── '}
-            <S>1629347259.jsonl</S> <C># 红警HBK08 粉丝时序</C>
+            <S>10028603.jsonl</S> <C># 像素老张 粉丝时序</C>
             {'\n│   ├── '}
-            <S>686127.jsonl</S>
+            <S>10028601.jsonl</S>
             {'     '}
-            <C># 籽岷 粉丝时序</C>
+            <C># 晨风UP主 粉丝时序</C>
             {'\n│   └── '}
             <S>...</S>
             {'\n└── '}

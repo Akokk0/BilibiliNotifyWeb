@@ -3,7 +3,7 @@ import { DynamicCard } from './cards/DynamicCard'
 import { GuardCard } from './cards/GuardCard'
 import { LiveCard } from './cards/LiveCard'
 import { SuperChatCard } from './cards/SuperChatCard'
-import { ArrowRight, GitHub } from './icons'
+import { ArrowRight, DiamondIcon, GitHub } from './icons'
 
 type FloatStyle = CSSProperties & { '--r': string }
 
@@ -94,7 +94,12 @@ export function Hero() {
             variant="compact"
             amount="¥1000"
             duration="1小时"
-            badgeLabel="💎 钻石会员"
+            badgeLabel={
+              <>
+                <DiamondIcon />
+                钻石会员
+              </>
+            }
             message="生日快乐！永远支持你！"
             gradStart="#fdcb6e"
             gradEnd="#e17055"
