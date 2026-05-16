@@ -31,7 +31,7 @@ const COLUMNS: Column[] = [
         href: 'https://github.com/Akokk0/bilibili-notify/issues',
         external: true,
       },
-      { label: '交流群 801338523', href: '#' },
+      { label: '交流群 801338523', href: 'https://qm.qq.com/q/LHYBnlvMmQ', external: true },
     ],
   },
 ]

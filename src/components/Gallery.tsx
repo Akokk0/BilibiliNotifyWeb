@@ -124,7 +124,9 @@ export function Gallery() {
       <div className="section-inner">
         <div className="section-label">推送卡片</div>
         <h2>一套设计语言，七张样卡。</h2>
-        <p className="lede">磨砂玻璃 + 渐变背景 + 圆角 12px，像素级还原 B 站观感。横向滑动查看 →</p>
+        <p className="lede">
+          磨砂玻璃 + 渐变背景 + 圆角 12px,自成一套视觉,不照搬 B 站。横向滑动查看 →
+        </p>
 
         <div className="gallery-scroll">
           {ITEMS.map((item) => (

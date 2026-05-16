@@ -52,7 +52,7 @@ const ENV_VARS = [
   },
   {
     k: 'BN_DASHBOARD_PASS',
-    desc: <>Dashboard basic-auth 密码</>,
+    desc: <>Dashboard basic-auth 密码;须与 BN_DASHBOARD_USER 成对设置,只设一个会被静默忽略</>,
     def: '—',
   },
   {
@@ -354,7 +354,8 @@ export function Standalone() {
                 <>
                   取消 <code>apps/docker-compose.example.yaml</code> 里 napcat 块的注释。 打开{' '}
                   <code>{`http://<host>:6099`}</code> NapCat WebUI,扫码登录 / 设置 access token、
-                  确认 OneBot HTTP server 跑在 <code>3000</code>。
+                  确认 OneBot HTTP server 跑在 <code>3000</code>(容器内端口,服务走 docker
+                  网络访问,无需对外映射)。
                 </>
               }
             />
