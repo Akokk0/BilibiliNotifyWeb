@@ -2138,6 +2138,8 @@ a {
   font-size: 13px;
   line-height: 1.75;
   word-break: normal;
+  /* 严格 CJK 避头尾:句末标点 / 引号绝不出现在行首 */
+  line-break: strict;
   gap: 8px;
 }
 
