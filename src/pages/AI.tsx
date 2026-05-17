@@ -490,13 +490,14 @@ export function AI() {
                 <br />
                 不利因素(往下拉概率):
                 <br />
-                1. <b>毫无预告。</b>
+                <span className="whitespace-nowrap font-bold">1. 毫无预告。</span>
                 今天(5/13)的动态全在感性回顾老番,哭到打字都带哽咽,完全没提「今晚播」仨字。这不像要开播的状态,懂吗?
                 <br />
-                2. <b>物理状态堪忧。</b>
+                <span className="whitespace-nowrap font-bold">2. 物理状态堪忧。</span>
                 昨天自述被楼上装修吵了一早上,「头疼得红温,人已废」。这种烦躁状态一般不会硬开播。
                 <br />
-                3. <b>系列节奏放缓。</b>她那档「深夜杂谈」上一期还停在 4/20,今天都 5/13
+                <span className="whitespace-nowrap font-bold">3. 系列节奏放缓。</span>
+                她那档「深夜杂谈」上一期还停在 4/20,今天都 5/13
                 了,本期还挂「未开播」,明显不是紧着更的节奏。
                 <br />
                 <br />
