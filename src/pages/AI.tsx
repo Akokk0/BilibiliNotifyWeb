@@ -191,20 +191,39 @@ export function AI() {
         ]}
         side={
           <div className="relative mx-auto w-fit max-w-[400px]">
-            <div className="[transform:rotate(-1.5deg)]">
-              <DynamicCard
-                width={320}
-                upName={CAST.laomao.name}
-                timestamp="05-09 16:48 · 动态"
-                topic={CAST.laomao.area}
-                content="蹲了 40 分钟,值。"
-                avatarGrad={CAST.laomao.grad}
-                avatarLetter={CAST.laomao.letter}
-                stats={{ share: '1.2万', comment: '3,847', like: '9.8万' }}
-              />
+            {/* 恶魔兔推送通知横幅 —— 动态退为引用,锐评为主角 */}
+            <div className="w-[360px] max-w-full [transform:rotate(-1.5deg)] rounded-[18px] border border-[var(--bn-border-default)] bg-[var(--bn-bg-card-soft)] px-5 py-[18px] shadow-[0_20px_44px_rgba(20,30,80,0.16)]">
+              <div className="flex items-center gap-2.5">
+                <MaidAva className="size-9 rounded-[11px] object-cover" />
+                <div className="min-w-0 flex-1 leading-tight">
+                  <div className="text-[13px] font-bold text-bn-text-primary">恶魔兔</div>
+                  <div className="text-[11px] text-bn-text-secondary">Bilibili Notify · 推送</div>
+                </div>
+                <div className="shrink-0 font-mono text-[11px] text-bn-text-tertiary">刚刚</div>
+              </div>
+
+              <div className="mt-3.5 rounded-[12px] border border-[var(--bn-border-subtle)] bg-[var(--bn-bg-page)] px-3.5 py-2.5">
+                <div className="flex items-center gap-1.5 text-[11px] text-bn-text-secondary">
+                  <span
+                    className="grid size-4 shrink-0 place-items-center rounded-full text-[8px] font-bold text-white"
+                    style={{ background: CAST.moyu.grad }}
+                  >
+                    {CAST.moyu.letter}
+                  </span>
+                  对「{CAST.moyu.name}」的新动态
+                </div>
+                <div className="mt-1 text-[12.5px] leading-[1.6] text-bn-text-tertiary">
+                  周末定了八个闹钟,最后被饿醒。
+                </div>
+              </div>
+
+              <div className="mt-3 text-[14px] font-medium leading-[1.7] text-bn-text-primary">
+                笑死小趴兔,八个闹钟负责仪式感,饿才负责叫醒你 —— 身体比闹钟诚实多了。
+              </div>
             </div>
+
             <div className="absolute -bottom-[18px] -right-3 z-[2] rotate-6 rounded-full bg-[linear-gradient(135deg,#fb7299,#e84393)] px-3.5 py-1.5 font-mono text-[11px] font-bold tracking-[0.06em] text-white shadow-[0_6px_16px_rgba(251,114,153,0.4)]">
-              ↗ 现场示例 · case 3
+              ↗ 每条推送 +1 句锐评
             </div>
           </div>
         }
