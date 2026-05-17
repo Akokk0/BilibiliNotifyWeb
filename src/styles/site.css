@@ -2129,21 +2129,76 @@ a {
   }
 }
 
-/* ── AI page — only the shared .sns chat-window extension ──────
-   AI 页布局已全面 Tailwind 化(见 src/pages/AI.tsx);site.css 这里只剩
-   Case 01/05 复用 Koishi .sns 聊天窗所需的两处必要扩展。 */
-.sns.ai-sns {
-  min-height: 0;
-}
-.sns.ai-sns .sns-body {
-  flex: 0 1 auto;
-}
+/* ── AI page — 5 个独立私信窗,每窗配一块逐案解读 ──────────────
+   每个案例 = 一个完整的 .sns 聊天窗(复用 Koishi .sns-* 共享类)+
+   一块 Explainer 拆解卡,左右贴边交替(nth-child(even) 翻列序);
+   窗高随内容(.ai-case-win min-height:0 覆盖 .sns 的固定 540px)。 */
 .sns-bubble-ai {
   font-family: var(--bn-font-cjk);
   font-size: 13px;
   line-height: 1.75;
   word-break: normal;
   gap: 8px;
+}
+
+.ai-cases {
+  display: flex;
+  flex-direction: column;
+  gap: 72px;
+  max-width: 1120px;
+  margin: 0 auto;
+}
+.ai-case {
+  display: grid;
+  grid-template-columns: 1fr clamp(360px, 40%, 460px);
+  gap: 48px;
+  align-items: center;
+}
+.ai-case:nth-child(even) {
+  grid-template-columns: clamp(360px, 40%, 460px) 1fr;
+}
+.ai-case:nth-child(even) .ai-case-ex {
+  order: 2;
+}
+.ai-case:nth-child(even) .ai-case-win {
+  order: 1;
+}
+/* 让私信窗高度随内容,而不是 .sns 的固定 min-height: 540px */
+.ai-case-win {
+  min-height: 0;
+}
+/* 私信里恶魔兔转发的一条动态卡 */
+.sns-fwd {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: flex-start;
+}
+.sns-fwd-tag {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--bn-text-secondary);
+}
+.sns-fwd-ava {
+  width: 20px;
+  height: 20px;
+}
+@media (max-width: 900px) {
+  .ai-cases {
+    gap: 48px;
+  }
+  .ai-case,
+  .ai-case:nth-child(even) {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+  .ai-case:nth-child(even) .ai-case-ex,
+  .ai-case:nth-child(even) .ai-case-win {
+    order: 0;
+  }
 }
 
 .ai-howgrid {
