@@ -211,7 +211,7 @@ export function Dashboard() {
         }
         lede={
           <>
-            Hono 后端 + React 18 + Tailwind 4 + tanstack-query + zustand 自建的现代后台。
+            Hono 后端 + React 19 + Tailwind 4 + tanstack-query + zustand 自建的现代后台。
             扫码登录、订阅 UP 主、推送目标、历史回放、AI 人格、卡片样式 ——
             全在一个浏览器标签里搞定。
           </>
@@ -222,7 +222,7 @@ export function Dashboard() {
           { label: '看 AI 女仆效果', to: '/ai', variant: 'ghost' },
         ]}
         pills={[
-          { label: 'React 18 + Vite', color: 'blue' },
+          { label: 'React 19 + Vite', color: 'blue' },
           { label: 'Tailwind 4 @theme', color: 'purple' },
           { label: 'tanstack-query', color: 'green' },
           { label: 'WebSocket Live', color: 'pink' },
@@ -260,7 +260,6 @@ export function Dashboard() {
                 <span>高级规则</span>
                 <span>卡片渲染·样式</span>
                 <span>智能女仆</span>
-                <span>系统</span>
               </div>
 
               <div className="bn-dash-grid">

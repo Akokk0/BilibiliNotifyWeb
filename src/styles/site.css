@@ -2320,7 +2320,8 @@ a {
   border: 1px solid var(--bn-border-subtle);
   font-size: 12px;
   color: var(--bn-text-tertiary);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  white-space: nowrap;
 }
 .bn-dash-nav span {
   padding: 4px 2px;
