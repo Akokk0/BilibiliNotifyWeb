@@ -19,16 +19,14 @@ const WORDS: Word[] = [
   { text: '好家伙', size: 14, color: '#4338ca', top: 115, left: 75 },
   { text: '栓Q', size: 12, color: '#a855f7', top: 8, left: 195 },
   { text: '?', size: 14, color: '#a855f7', top: 58, left: 245 },
-  { text: '雷军', size: 12, color: '#9333ea', top: 122, left: 200 },
+  { text: '6', size: 12, color: '#9333ea', top: 122, left: 200 },
 ]
 
 type Props = {
   width?: number
-  total?: string
-  topN?: number
 }
 
-export function WordcloudCard({ width = 320, total = '本场弹幕：4,832', topN = 10 }: Props) {
+export function WordcloudCard({ width = 320 }: Props) {
   return (
     <div
       className="bn-wrap"
@@ -60,11 +58,7 @@ export function WordcloudCard({ width = 320, total = '本场弹幕：4,832', top
             </span>
           ))}
         </div>
-        <div className="mx-4 h-px bg-black/6" />
-        <div className="flex justify-between px-4 py-2.5 text-[13px] text-[#666]">
-          <span>{total}</span>
-          <span>词频 Top {topN}</span>
-        </div>
+        <div className="h-3" />
       </div>
     </div>
   )

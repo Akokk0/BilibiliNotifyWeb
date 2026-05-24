@@ -290,11 +290,10 @@ export function AI() {
       <section className="docsec" id="cases" style={{ background: 'var(--bn-gallery-bg)' }}>
         <div className="docsec-inner">
           <div className="section-label">现场样本</div>
-          <h2>5 个真实生成案例,5 个独立窗口。</h2>
+          <h2>5 段真实生成,看女仆怎么读出弦外之音。</h2>
           <p className="lede">
             订阅管理 → 带货动态 → 极简动态 → 官方视频 → 直播概率推理 ——
-            五个场景各跑一段真实私信,每段都是独立的一个聊天窗; 旁边逐条拆解每个案例 AI
-            真正抓到的关键点。
+            五种动态形态各跑一段真实私信,旁边逐条拆解每个案例 AI 真正抓到的关键点。
           </p>
 
           <div className="ai-cases">
