@@ -99,9 +99,9 @@ const FEATURES: Feature[] = [
     title: '让大模型替你"看"完整场直播。',
     desc: (
       <>
-        接入任意 OpenAI 兼容接口（DeepSeek / 智谱 / OneAPI
-        皆可）,自动生成直播总结、弹幕聚合、高光时刻提取。主人回家以后,女仆已经把精华帮您打包好了
-        (*´∀`)~♡
+        接入任意 OpenAI 兼容接口（DeepSeek / 智谱 / OneAPI 皆可）,给每条动态来一句锐评、
+        给每场直播打一份总结。人格 / prompt 可 per-UP 定制 ——
+        主人回家以后,女仆已经把精华帮您打包好了 (*´∀`)~♡
       </>
     ),
     pkg: '@bilibili-notify/ai',
@@ -192,14 +192,12 @@ function FeatureCard({ feature: f }: { feature: Feature }) {
             <p className="max-w-[560px]">{f.desc}</p>
           </div>
           <div className="feat-ai-summary">
-            <div className="h"># 本场直播总结</div>
-            今天主要游玩《黑神话:悟空》,完成
-            <br />
-            第二回通关,弹幕高光:
-            <br />
-            "这个boss太帅了"×238
-            <br />
-            <span className="meta">生成耗时 2.4s · 1,240 tokens</span>
+            <div className="h">🐰 恶魔兔 · 锐评中…</div>
+            <div className="quote">周末定了八个闹钟,最后被饿醒。</div>
+            <div className="punch">
+              笑死小趴兔,八个闹钟负责仪式感,饿才负责叫醒你 —— 身体比闹钟诚实多了。
+            </div>
+            <span className="meta">deepseek-chat · 1.2s</span>
           </div>
         </div>
         <div className="pkg mt-5">{f.pkg}</div>
