@@ -124,8 +124,9 @@ const FAQS: FAQItem[] = [
     q: '怎么备份 / 迁移?',
     a: (
       <>
-        停容器 → 打包 <code>/data</code> 整个目录 → 在新机器解压 → 跑同样的 docker run(注意{' '}
-        <code>BN_COOKIE_KEY</code> 不变)。完事。
+        停容器 → 打包 <code>./data</code> 和 <code>./config</code> 两个目录 → 在新机器解压 →
+        跑同样的 docker run(注意 <code>BN_COOKIE_KEY</code> 不变,或{' '}
+        <code>./data/secrets/master.key</code>随 <code>./data</code> 一并带走)。完事。
       </>
     ),
   },
@@ -133,8 +134,9 @@ const FAQS: FAQItem[] = [
     q: '改 yaml 要重启吗?',
     a: (
       <>
-        bootstrap 阶段的配置(端口、dataDir、cookieKey)改完要重启容器。运行时配置(订阅、推送目标、AI
-        设置)走 Dashboard 改,<code>config-changed</code> 事件触发引擎热重载,不用重启。
+        bootstrap 阶段的字段(端口、dataDir、cookieKey)改完 <code>./config/bn.config.yaml</code>{' '}
+        后要重启容器。运行时配置(订阅、推送目标、AI 设置)走 Dashboard 改,<code>config-changed</code>{' '}
+        事件触发引擎热重载,不用重启。
       </>
     ),
   },
@@ -168,16 +170,16 @@ export function Standalone() {
           { label: '先看看 Dashboard', to: '/dashboard', variant: 'ghost' },
         ]}
         pills={[
-          { label: 'Docker · GHCR', color: 'blue' },
+          { label: 'Docker Hub · alpha', color: 'blue' },
           { label: 'Hono · Node 20', color: 'purple' },
           { label: 'puppeteer-core', color: 'green' },
           { label: 'OneBot · Webhook', color: 'pink' },
         ]}
         side={
           <Codeblock title="~ — bash">
-            <C># 拉镜像 + 一条 docker run 起服务</C>
+            <C># 拉镜像 + 一条 docker run 起服务(alpha = 持续构建,当前可用)</C>
             {'\n'}
-            <P>$</P> <K>docker pull</K> ghcr.io/akokk0/bilibili-notify:latest
+            <P>$</P> <K>docker pull</K> akokk0/bilibili-notify:alpha
             {'\n\n'}
             <P>$</P> <K>docker run</K> <K>-d</K> \{'\n'}
             {'    '}
@@ -187,10 +189,12 @@ export function Standalone() {
             {'    '}
             <K>-v</K> <S>{`"$(pwd)/data:/data"`}</S> \{'\n'}
             {'    '}
+            <K>-v</K> <S>{`"$(pwd)/config:/config"`}</S> \{'\n'}
+            {'    '}
             <K>-e</K> <V>BN_DASHBOARD_USER</V>=<S>admin</S> \{'\n'}
             {'    '}
             <K>-e</K> <V>BN_DASHBOARD_PASS</V>=<S>{`'change-me'`}</S> \{'\n'}
-            {'    '}ghcr.io/akokk0/bilibili-notify:latest
+            {'    '}akokk0/bilibili-notify:alpha
             {'\n\n'}
             <C># 打开浏览器</C>
             {'\n'}
@@ -213,18 +217,20 @@ export function Standalone() {
               num={1}
               title={
                 <>
-                  准备 <code>bn.config.yaml</code> 和数据目录
+                  准备 <code>./data</code> 和 <code>./config</code> 目录
                 </>
               }
               desc={
                 <>
-                  创建一个工作目录,把 <code>apps/server/bn.config.example.yaml</code> 复制为{' '}
-                  <code>bn.config.yaml</code>,按机器情况改一改 <code>server.port</code> /{' '}
-                  <code>cookieEncryptionKey</code>。或者全部留空,跑起来用 ENV 覆盖也行。
+                  容器把运行时状态写到 <code>/data</code>,<code>bn.config.yaml</code> 放在{' '}
+                  <code>/config</code> 下 —— 首启动会自动 seed
+                  生成。本地建两个空目录就够,首跑之后再去 <code>./config/bn.config.yaml</code> 改{' '}
+                  <code>server.port</code> / 凭据 / <code>cookieEncryptionKey</code>,
+                  <code>docker compose restart</code> 一次生效。
                 </>
               }
               extras={
-                <Codeblock title="bn.config.yaml">
+                <Codeblock title="./config/bn.config.yaml(首启动 seed 生成,这里是形状参考)">
                   <Y>server</Y>:{'\n'}
                   {'  '}
                   <Y>host</Y>: <S>{`"0.0.0.0"`}</S>
@@ -264,7 +270,7 @@ export function Standalone() {
                   {'  '}
                   <Y>bilibili-notify</Y>:{'\n'}
                   {'    '}
-                  <Y>image</Y>: <S>ghcr.io/akokk0/bilibili-notify:latest</S>
+                  <Y>image</Y>: <S>akokk0/bilibili-notify:alpha</S>
                   {'\n'}
                   {'    '}
                   <Y>ports</Y>: [<S>{`"8787:8787"`}</S>]{'\n'}
@@ -272,7 +278,7 @@ export function Standalone() {
                   <Y>volumes</Y>:{'\n'}
                   {'      '}- <S>./data:/data</S>
                   {'\n'}
-                  {'      '}- <S>./bn.config.yaml:/app/apps/server/bn.config.yaml:ro</S>
+                  {'      '}- <S>./config:/config</S>
                   {'\n'}
                   {'    '}
                   <Y>environment</Y>:{'\n'}
@@ -341,8 +347,9 @@ export function Standalone() {
           <div className="section-label">推送目标 · OneBot</div>
           <h2>接 QQ?跑个 NapCat sidecar。</h2>
           <p className="lede">
-            Standalone 自己实现了 OneBot v11 client,配上 NapCat / Lagrange 当 server 就能下发到 QQ。
-            官方 example compose 已经有 sidecar block,复制过来就行。
+            Standalone 自己实现了 OneBot v11 client,支持 <b>HTTP / 正向 WS / 反向 WS</b>{' '}
+            三种连接方式,配上 NapCat / Lagrange 当 server 就能下发到 QQ。 官方 example compose
+            已经有 sidecar block,复制过来就行。
           </p>
 
           <StepList>
@@ -355,7 +362,8 @@ export function Standalone() {
                   取消 <code>apps/docker-compose.example.yaml</code> 里 napcat 块的注释。 打开{' '}
                   <code>{`http://<host>:6099`}</code> NapCat WebUI,扫码登录 / 设置 access token、
                   确认 OneBot HTTP server 跑在 <code>3000</code>(容器内端口,服务走 docker
-                  网络访问,无需对外映射)。
+                  网络访问,无需对外映射)。 想走 WS 也行 ——<code>ws://napcat:3001</code> 是正向,反向
+                  WS 则需要在 compose 里把监听端口(例 <code>"9797:9797"</code>)映射出来。
                 </>
               }
             />
@@ -366,7 +374,8 @@ export function Standalone() {
               desc={
                 <>
                   打开「推送目标 / 新建」,平台选 <span className="inline">onebot</span>,
-                  <code>baseUrl</code> 填 <code>http://napcat:3000</code>(容器内主机名),
+                  <code>connection</code> 选 HTTP / 正向 WS / 反向 WS 之一,<code>baseUrl</code> 填{' '}
+                  <code>http://napcat:3000</code>(WS 时换成对应 <code>ws://</code> 端点或监听端口),
                   <code>accessToken</code> 跟 NapCat 那边对齐,<code>scope</code> 选 group 并填群号。
                   <b>点「测试」</b>,看到 ✓ 就保存。
                 </>

@@ -235,8 +235,9 @@ export function AI() {
           <div className="section-label">人格介绍</div>
           <h2>主人公先登场。</h2>
           <p className="lede">
-            下面这些案例的女仆都叫「恶魔兔」,是一套自用人格。你完全可以拿这套配置当模板,
-            改成自己心意的女仆。
+            下面这些案例的女仆都叫「恶魔兔」,是一套自用人格。开箱默认走「温柔女仆」预设 (
+            <code>persona.preset: maid</code>),这里展示的是切到 <code>custom</code> 自己写出来的样子
+            —— 你完全可以拿这套配置当模板,改成自己心意的女仆。
           </p>
 
           <div className="grid items-center gap-8 rounded-[22px] border border-bn-pink/15 bg-[linear-gradient(135deg,rgba(251,114,153,0.06),rgba(0,174,236,0.06))] px-9 py-8 md:grid-cols-[220px_1fr]">

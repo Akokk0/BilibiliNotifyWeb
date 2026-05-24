@@ -559,10 +559,10 @@ export function Dashboard() {
                 OneBot v11
               </div>
               <div className="pdesc">
-                最常见的 QQ 路径,搭配 NapCat / Lagrange / go-cqhttp 都行。baseUrl + accessToken
-                两个字段配完测一下,目标群 / 私聊都支持。
+                最常见的 QQ 路径,搭配 NapCat / Lagrange / go-cqhttp 都行。 connection 在 HTTP / 正向
+                WS / 反向 WS 三种里选一种,baseUrl + accessToken 配完测一下,目标群 / 私聊都支持。
               </div>
-              <div className="pmeta">scope: group | private · NapCat 推荐</div>
+              <div className="pmeta">HTTP · 正向 WS · 反向 WS · group | private</div>
             </div>
             <div className="platform-card">
               <div className="pname">
